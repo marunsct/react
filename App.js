@@ -6,7 +6,7 @@ export default function App() {
   state [outText, setText] = useState("Changed text");
     return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Open up App.js to start working on yours app!</Text>
       <Button title="Click me" />
     </View>
   );
