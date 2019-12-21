@@ -1,17 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { View, Button, TextInput, StyleSheet, Text, FlatList } from 'react-native';
+
+// Custom Components
+import ListItems from "./Components/Listitemview";
+import GoalsInput from "./Components/GoalsInput";
 
 export default function App() {
-  state [outText, setText] = useState("Changed text");
+  // states declaration
+  const [courseGoals, setCourseGoals] = useState([]);
+
+// state handler declaration         
+
+  const onAddhandler = (goals) =>{
+    setCourseGoals(currentGoals => [...currentGoals, {id: Math.random().toString(), value:goals} ]);
+    //setgoals("");
+  
+  };
     return (
-    <View style={{padding: 100}}>
-      <View>
-        <Text>Open up App.js to start working on yours app!</Text>
-        <TextInput placeholder="hiii" style={{borderColor:'BLACK', borderWidth:1}}/>
-        <Button title="Click me" />
-      </View>
+    <View style={styles.screen}>
+      <GoalsInput onAddhandler={onAddhandler}/>
+      <FlatList 
+        data={courseGoals}
+        renderItem = {(itemData => 
+            <ListItems title ={itemData.item.value} />
+          )}/>
     </View>
   );
 }
-
+ 
+const styles = StyleSheet.create({
+screen: {
+  padding : 50
+}
+});
