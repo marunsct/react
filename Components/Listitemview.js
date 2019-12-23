@@ -1,12 +1,15 @@
 import React from "react";
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, TouchableOpacity} from "react-native";
 
 const ListItems = (props) => {
 
-    return   (    
-     <View style = {styles.listitem}>
-        <Text>{props.title}</Text>
-     </View> 
+    return   (   
+    <TouchableOpacity onLongPress={props.onDelete.bind(this, props.id)}
+                    onPress={props.onEdit.bind(this,props.id)}>  
+        <View style = {styles.listitem}>
+            <Text>{props.title}</Text>
+        </View> 
+     </TouchableOpacity> 
     );
 };
 
