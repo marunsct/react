@@ -6,17 +6,19 @@ const GoalsInput = (props) => {
     const [goals, setgoals] = useState(props.egoal);
     const [id, setid] = useState(props.id);
     const onAddgoals = (text) => {
+        console.log(props , goals, id, "hiiiii");
         setgoals(text);
+
       };
     const onButtonPress = () => {
         console.log(props , goals, id);
-        props.onSave(goals, id);
-        //setgoals("");
+        props.onSave(goals, props.id);
+        setgoals("");
     };
     return(
         <Modal visible={props.visible} animationType="slide">
         <View style={styles.inputContainer}>
-        < TextInput placeholder = "Course Goals"
+        < TextInput placeholder = {props.egoal}
         style = {styles.input}
         onChangeText = {onAddgoals}
         value={goals}/>
